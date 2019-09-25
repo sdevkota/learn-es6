@@ -21,7 +21,10 @@
             <p class="description">Let is a new keyword in ES6.It allows you to create variables that are block scoped. The keyword var is still
                 supported but you should avoid using var if you intend to create a local variable.</p>
             <article class="code-block">
-                if (true) { let a = 40; console.log(a); //40 } console.log(a); // undefined
+                if (true) { let a = 40;
+                     console.log(a); //40
+                     }
+                 console.log(a); // undefined
             </article>
         </section>
         <section>
@@ -29,7 +32,9 @@
             <p class="description">const keyword is used if you would never want to re assign value to a variable declaration. This is similar to
                 contant keyword we have in other server side languages such as C#, Java, and Python</p>
             <article class="code-block">
-                const url= "http://www.google.com" console.log(url); url= "http://www.yahoo.com" //illegal
+                const url= "http://www.google.com";
+                console.log(url); 
+                url= "http://www.yahoo.com" //illegal
             </article>
         </section>
         <section>
@@ -39,8 +44,12 @@
 
             </p>
             <article class="code-block">
-                //old way var addMethod=function(test){ return test; } //new way let addMethod=(test)=>test; //traditional approach var total=addMethod(function(a,b){
-                return a+b; }); //new way let total=addMethod((a,b)=>a+b); //calling a function total(1,2);
+                //old way 
+                var addMethod=function(test){ return test; } 
+                //new way let addMethod=(test)=>test; 
+                //traditional approach var total=addMethod(function(a,b){
+                return a+b; }); 
+                //new way let total=addMethod((a,b)=>a+b); //calling a function total(1,2);
             </article>
         </section>
         <section>
@@ -48,7 +57,12 @@
             <p class="description">Es6 allows you to write loop in a modern way just like how we have it in the modern programming langages like
                 C# and JAVA</p>
             <article class="code-block">
-                var arr=[1,2,3,4]; //old way arr.forEach(function(value){ console.log(value); }) //new way for(let value of arr){ console.log(value);
+                var arr=[1,2,3,4]; //old way 
+                arr.forEach(function(value){ console.log(value); })
+                
+                //new way 
+                for(let value of arr){ 
+                    console.log(value);
                 }
 
             </article>
@@ -57,7 +71,9 @@
             <h3 class="title">Template String</h3>
             <p class="description">Template string builder allows you to concat your string values easily. Please take a look at the example below.</p>
             <article class="code-block">
-                const domain= "google.com"; //new way to concat string literals const fullUrl=`full domain is "https:\\www.${domain}" `;
+                const domain= "google.com"; 
+                //new way to concat string literals 
+                const fullUrl=`full domain is "https:\\www.${domain}" `;
                 console.log(fullUrl);
 
             </article>
@@ -66,7 +82,10 @@
             <h3 class="title">Default function values</h3>
             <p class="description">With Es6, you can now pass default values of function args if no values are passed.</p>
             <article class="code-block">
-                function test(name,age=18){ return name+":"+age; } test("sudeep");
+                function test(name,age=18){
+                     return name+":"+age;
+                     } 
+                     test("sudeep");
 
             </article>
         </section>
@@ -74,31 +93,55 @@
             <h3 class="title">Object Initilaizer</h3>
             <p class="description">With Es6, you can initialize the object values before creating an object</p>
             <article class="code-block">
-                let name="sudeep"; let age=27; let obj={ name, age, greet(){ return `Hello ${name}`; } } console.log(obj.greet());
+                let name="sudeep"; 
+                let age=27; 
+                let obj={
+                     name,
+                     age, 
+                     greet(){
+                          return `Hello ${name}`;
+                 } } 
+                 console.log(obj.greet());
 
             </article>
         </section>
         <section>
             <h3 class="title">Maps</h3>
-            <p class="description">With Es6, you can initialize the object values before creating an object</p>
+            <p class="description">With Es6, you can create a map using map method.</p>
             <article class="code-block">
-                let name="sudeep"; let age=27; let obj={ name, age, greet(){ return `Hello ${name}`; } } console.log(obj.greet());
+                let map=new Map();
+                map.set(1, "One");
+                map.get(1);
+                map.size();
+                map.has(1);
+                map.clear();
+                //also Objects/Array can be used as key in Map in JS
 
             </article>
         </section>
         <section>
             <h3 class="title">Sets</h3>
-            <p class="description">With Es6, you can initialize the object values before creating an object</p>
+            <p class="description">With Es6, you can also create sets using native methods</p>
             <article class="code-block">
-                let name="sudeep"; let age=27; let obj={ name, age, greet(){ return `Hello ${name}`; } } console.log(obj.greet());
+                let name="sudeep"; 
+                let age=27; 
+                let obj={ name, age, greet(){ return `Hello ${name}`; } }
+                 console.log(obj.greet());
 
             </article>
         </section>
         <section>
-            <h3 class="title">Classes</h3>
-            <p class="description">With Es6, you can initialize the object values before creating an object</p>
+            <h3 class="title">Classes </h3>
+            <p class="description">With Es6, you can create class natively without creating funtions.</p>
             <article class="code-block">
-                let name="sudeep"; let age=27; let obj={ name, age, greet(){ return `Hello ${name}`; } } console.log(obj.greet());
+              class Test{
+                  Constructor(variable){
+                      this.instanceVariable=variable; 
+                  }
+                  methodName(){
+                      return this.instanceVariable; 
+                  }
+              }
 
             </article>
         </section>
@@ -106,15 +149,44 @@
             <h3 class="title">Constructor</h3>
             <p class="description">With Es6, you can initialize the object values before creating an object</p>
             <article class="code-block">
-                let name="sudeep"; let age=27; let obj={ name, age, greet(){ return `Hello ${name}`; } } console.log(obj.greet());
+                class Test{
+                    Constructor(variable){
+                        this.instanceVariable=variable; 
+                    }
+                    methodName(){
+                        return this.instanceVariable; 
+                    } 
+                }
 
+                //invocation 
+                let testObject=new Test("hello");
+                testObject.methodName();
             </article>
         </section>
         <section>
             <h3 class="title">Getters and Setters</h3>
-            <p class="description">With Es6, you can initialize the object values before creating an object</p>
+            <p class="description">With Es6, getters and setters are also available in class</p>
             <article class="code-block">
-                let name="sudeep"; let age=27; let obj={ name, age, greet(){ return `Hello ${name}`; } } console.log(obj.greet());
+                class Test{
+                    Constructor(variable){
+                        this.instanceVariable=variable; 
+                    }
+                    methodName(){
+                        return this.instanceVariable; 
+                    }
+                    get(){
+                        return this.instanceVariable;
+                    }
+                    set(value){
+                      this.instanceVariable=value;
+                    }
+                }
+
+                //invocation 
+                let testObject=new Test();
+           testObject.set("test");
+           testObject.get();
+
 
             </article>
         </section>
