@@ -4,8 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="description" content="Learn ES6 the fastest way in a single page application. In this document, you can learn es6 by looking at the actual code"> 
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ES6 Features</title>
+    <meta name="keywords" content="learn es6, learn es6 faster, what is es6, learn es6 quickly, es6 js, babel">
+    <title>Learn Es6 the easiest way</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -13,8 +15,20 @@
 <body>
     <header>
         <h3>Learn ES6</h3>
-        
+
     </header>
+    <section class="hero">
+        <div class="center hero-container">
+                <h1 class="page-title hero-item">Learn Es6 With Actual Code Examples </h1>
+                <div class="hero-item meta-container ">
+                   <img src="" alt="">
+                   <h3>Sudeep Devkota</h3>
+                   <em>Sep 26,2019</em>
+                </div>
+        </div>
+     
+      <div class="bg-hero"></div>
+    </section>
     <div class="container">
         <section>
             <h3 class="title">Let</h3>
@@ -339,16 +353,81 @@
         </section>
         <section>
             <h3 class="title">Promises in ES6</h3>
-            <p class="description"></p>
+            <p class="description">Promises is a container for a future value. Literally, you use promise object to hold the value that might be a result of a network connection, AJAX result, computer value etc. There are two objects that are passed to the promise object when creating them- Resolve and Reject. If promise object returns a value successfully, a resolve object will carry that value; otherwise, it will be the reject object.
+            </p>
             <article class="code-block">
+                // Step 1: Create a promise Object
+                const pr=new Promise((resolve,reject)=>{
+                    if(ajaxValueReturned){
+                          resolve("Ajax Value is returned");
+                    }
+                    else{
+                        reject(new Error("AJAX could not be loaded"));
+                    }
+                });
+                //Step 2: Do more work after resolved
+                // prObject.then(whatToDoAfterFunction,error)
+                //First callback is for if resolved and second is for when rejected
+                /instead of .then, you can also use .done 
+                // These return a new promise so you can do more .then/.done/.catch
+
+                pr.then(
+                    (ajaxValueReturned)=>{
+                        console.log(ajaxValueReturned);
+                    },
+                    (error)=>{
+                        console.log(error)
+                    }
+                ).catch()=>{
+                    console.log("caught an error");
+                }
+
+                //If you pass a function in the promise, it will call it immediately
+                //This will return Promise object after a delay of whatever is passed in the method
                 
+                 function delay(interval){
+                       return new Promise(
+                           function(){
+                            setTimeOut(resolve,interval);
+                           }
+                       );
+                 }
             </article>
         </section>
         <section>
-            <h3 class="title">Aync Await keywords</h3>
-            <p class="description"></p>
+            <h3 class="title">Async Await keywords</h3>
+            <p class="description">Async is added before the function name or declaration to indecate that the function is asynchronous. 
+                Await is added infront of a function call within an async function to indicate that the process is long </p>
+                <p class="description">Keep in mind that the async function returns a promise</p>
             <article class="code-block">
-               
+                //BASIC EXAMPLE
+                    const exampleAsync= async()=>{
+                              return 0;
+                             }
+                    //This returns a promise object 
+                    exampleAsync().then((val)=>{
+                            console.log(`Async is executed with the value of ${val}`);
+                    })
+
+                    //EXAMPLE WITH Await 
+
+                    const exampleAsync= async()=>{
+                        let promiseObj=new Promise((resolve,reject)=>{
+                                           setTimeout(()=>resolve("Resolved"),2000); 
+                                           if(false){
+                                               reject('something went wrong');
+                                           }
+                                  });
+          
+                                 let result= await promiseObj;
+                                   return result;
+                                 };
+          
+                                 exampleAsync()
+                                   .then((val)=>console.log(val))
+                                    .catch((error)=>console.log(new Error("Something went wrong")));
+
+                                     
             </article>
         </section>
         <section>
@@ -423,10 +502,47 @@
 
             </article>
         </section>
+        <section>
+                <h3 class="title">Callbacks</h3>
+                <p class="description">Callback function is a function that is passed to a function to be executed after some event.</p>
+                <article class="code-block">
+                        //some function that returns the value
+                        let getApiValues=(endPoint)=>{
+                          console.log(`${endPoint} is called`);
+                          const value=true;
+                          if(value){
+                            return true;
+                          }
+                          else{
+                            return false;
+                          }
+                        }
+                        
+                        //creating your own callback
+                        let ourAPICallback=(endPoint,callback)=>{
+                          if(getApiValues(endPoint)){
+                            callback("success");
+                          }
+                          else{
+                             callback("error");
+                          }
+                        }
+                        
+                        //calling the function that takes a callback param
+                        ourAPICallback("https://google.com", (message)=>{
+                          if(message=="success"){
+                            console.log("Successfully retrieved");
+                          }
+                          else{
+                            console.log("Error Occurred");
+                          }
+                        });
+                </article>
+            </section>
 
         <section>
                 <h3 class="title">Symbol</h3>
-                <p class="description">An immutable primitive type called Symbol is introduced in Es6</p>
+                <p class="description">An immutable primitive type called Symbol is introduced in Es6.</p>
                 <article class="code-block">
                         const symbol1 = Symbol(); 
                         //not using new but a factory method
