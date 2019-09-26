@@ -21,7 +21,8 @@
             <p class="description">Let is a new keyword in ES6.It allows you to create variables that are block scoped. The keyword var is still
                 supported but you should avoid using var if you intend to create a local variable.</p>
             <article class="code-block">
-                if (true) { let a = 40;
+                if (true) { 
+                    let a = 40;
                      console.log(a); //40
                      }
                  console.log(a); // undefined
@@ -45,11 +46,22 @@
             </p>
             <article class="code-block">
                 //old way 
-                var addMethod=function(test){ return test; } 
-                //new way let addMethod=(test)=>test; 
-                //traditional approach var total=addMethod(function(a,b){
-                return a+b; }); 
-                //new way let total=addMethod((a,b)=>a+b); //calling a function total(1,2);
+                var addMethod=function(test){ 
+                    return test; 
+                } 
+                //new way 
+                let addMethod=(test)=>test; 
+
+                //traditional approach 
+                var total=addMethod(function(a,b){
+                return a+b; 
+            }); 
+                //new way 
+                let total=addMethod((a,b)=>a+b); 
+                //calling a function 
+                total(1,2);
+
+                const abc = name => `Hello ${name}`;
             </article>
         </section>
         <section>
@@ -58,7 +70,9 @@
                 C# and JAVA</p>
             <article class="code-block">
                 var arr=[1,2,3,4]; //old way 
-                arr.forEach(function(value){ console.log(value); })
+                arr.forEach(function(value){ 
+                    console.log(value);
+                 })
                 
                 //new way 
                 for(let value of arr){ 
@@ -71,10 +85,18 @@
             <h3 class="title">Template String</h3>
             <p class="description">Template string builder allows you to concat your string values easily. Please take a look at the example below.</p>
             <article class="code-block">
-                const domain= "google.com"; 
+                const domain= "google.com";
+                
                 //new way to concat string literals 
-                const fullUrl=`full domain is "https:\\www.${domain}" `;
+                const fullUrl=`full domain is "https:\\www.${domain}" `; 
+
+                // string interpolation 
                 console.log(fullUrl);
+
+                //expressions inside a string
+
+                let x=10;
+                console.log(`X is greater than 5? ${x>5?'Yes':'No'}`);
 
             </article>
         </section>
@@ -82,9 +104,10 @@
             <h3 class="title">Default function values</h3>
             <p class="description">With Es6, you can now pass default values of function args if no values are passed.</p>
             <article class="code-block">
-                function test(name,age=18){
+               let test=(name,age=18)=>
+                {
                      return name+":"+age;
-                     } 
+                } 
                      test("sudeep");
 
             </article>
@@ -95,6 +118,7 @@
             <article class="code-block">
                 let name="sudeep"; 
                 let age=27; 
+
                 let obj={
                      name,
                      age, 
@@ -189,34 +213,94 @@
         </section>
         <section>
             <h3 class="title">Object Initilaizer</h3>
-            <p class="description">With Es6, you can initialize the object values before creating an object</p>
+            <p class="description">With Es6, you can initialize the object values before creating an object and more.</p>
             <article class="code-block">
-                let name="sudeep"; let age=27; let obj={ name, age, greet(){ return `Hello ${name}`; } } console.log(obj.greet());
+              //property shorthand
+              let x=10;
+              let y=20;
+              let obj={x,y}; 
+
+              //ES5
+              
+                var x = 10;
+                var y = 20;
+                var obj = {
+                x: x,
+                y: y
+                };
+                  
+                //Object Method declaration- fucntion and : is not required
+                let obj={
+                    method1(){
+
+                    },
+                    method2(){
+
+                    }
+                }
+                //ES5
+                let obj={
+                    method1:function(){
+
+                    },
+                    method2:function(){
+
+                    }
+                }
+                
 
             </article>
         </section>
         <section>
-            <h3 class="title">Static vs Instance Methods</h3>
-            <p class="description">With Es6, you can initialize the object values before creating an object</p>
+            <h3 class="title">Static vs Instance Methods/ Inheritance</h3>
+            <p class="description"></p>
             <article class="code-block">
-                let name="sudeep"; let age=27; let obj={ name, age, greet(){ return `Hello ${name}`; } } console.log(obj.greet());
+                    class Vehicle{
+                        constructor(make){
+                                 this.make=make;
+                             }
+                       }
+                     class Car extends Vehicle{
+                             constructor(make,model){
+                                 super(make);
+                                 this.model=model;
+                             }
+                             static drive(){
+                                 return `driving ${this.make} Model: ${this.model}`;
+                             }
+                             static honk(){
+                                 return "Beep";
+                             }
+                       }
 
             </article>
         </section>
         <section>
             <h3 class="title">Rest Parameters</h3>
-            <p class="description">Rest parameters allow you to quickly pass a list of dynamic array to a function</p>
+            <p class="description">Rest parameters allow you to quickly pass a list of dynamic array to a function.</p>
             <article class="code-block">
-                function sumArray(...array){ let result=0; for(let value of array){ result+=value; } console.log(result); } //call function
-                using dynamic array sumArray(1,2,3);
+                    let add= (x,y, ...a)=> {
+                        let result=0;
+                         for(i of [x,y,...a]){
+                             console.log(i);
+                             }
+                      }
+                      add(1,2,3,4)
+               
             </article>
         </section>
         <section>
             <h3 class="title">Spread Operators</h3>
-            <p class="description">Spread operator allow you to quickly display array into series of list items. You can think of this as an opposite
+            <p class="description">Spread operator allow you to quickly display/copy/concat array into series of list items. You can think of this as an opposite
                 of Rest parameters.</p>
             <article class="code-block">
-                let array=[1,2,3] console.log(...array);
+                let array=[1,2,3] 
+                console.log(...array);
+
+                //another example
+                let array1=[1,2,3]
+                let array2=[4,5,6]
+                let array3= [0, ...array1,...array2];
             </article>
         </section>
         <section>
@@ -225,67 +309,132 @@
                 </p>
             <article class="code-block">
 
-                let numbers=[1,2,3]; let [a,b]=numbers; // a will be 1 and b will be let [a,b,c,d]=numbers;// d will be undefined //quickly
-                swap values let a=5; let b=10; [b,a]=[a,b]; console.log(a) // will be 10 console.log(b) // will be 5 //skip
-                the array order let [a,,c]=numbers; console.log(a,c); //will be 1,3 let [a,b]=[1,3,4]; //destruct an object
-                let obj={ name: "sudeep", age:29, greet:function(){ return name; } } let {name,age,greet}=obj; //but this
-                will not work -- cannot skip it let {name,,greet}=obj; //you can also alias the property inside an object
-                let {name:myName,,greet:greetMe}=obj; console.log(greetMe())
+                //ARRAY 
+                    let array = [ 1, 2, 3,4 ];
+                    let [ a, , b,c ] = array;
+                    console.log(a); //1
+                    console.log(b); //3
+                    console.log(c);  //4
+
+                    //you can also swap values 
+                    [a,c]=[c,a];
+                    console.log(a); //4
+                    console.log(b); //3
+                    console.log(c);  //1
+                    let [ a, , b,c,d=5 ] = array;
+                    console.log(d);  //5
+
+                    //OBJECT destruction
+
+                    let test={a:10,b:20,c:30,d:40};
+                    let {a,b,d}=test
+                    console.log(a); //10
+                    console.log(b); //20
+                    console.log(d); //40
+                    let {c,e=50}=test;
+                    console.log(e); //50
+
 
             </article>
         </section>
         <section>
             <h3 class="title">Promises in ES6</h3>
-            <p class="description">Rest parameters allow you to quickly pass a list of dynamic array to a function</p>
+            <p class="description"></p>
             <article class="code-block">
-                function sumArray(...array){ let result=0; for(let value of array){ result+=value; } console.log(result); } //call function
-                using dynamic array sumArray(1,2,3);
+                
             </article>
         </section>
         <section>
             <h3 class="title">Aync Await keywords</h3>
-            <p class="description">Rest parameters allow you to quickly pass a list of dynamic array to a function</p>
+            <p class="description"></p>
             <article class="code-block">
-                function sumArray(...array){ let result=0; for(let value of array){ result+=value; } console.log(result); } //call function
-                using dynamic array sumArray(1,2,3);
+               
             </article>
         </section>
         <section>
             <h3 class="title">Find Elements in an array</h3>
-            <p class="description">Rest parameters allow you to quickly pass a list of dynamic array to a function</p>
+            <p class="description">Find method quickly filers items out of an array</p>
             <article class="code-block">
                     [ 1, 3, 4, 2 ].find(x => x > 3) // output is 4
 
-                    [ 1, 3, 4, 2 ].findIndex(x => x > 3) // output is 2
+                    [ 1, 3, 4, 2 ].findIndex(x => x > 1) // output is 2
             </article>
         </section>
         <section>
-            <h3 class="title">Finding substring in a string(Search)</h3>
-            <p class="description">Rest parameters allow you to quickly pass a list of dynamic array to a function</p>
+               
+            <h3 class="title">Search substring in a string</h3>
+            <p class="description">Find method quickly filers items out of an array</p>
             <article class="code-block">
-                    "hello".startsWith("ello", 1) // true
-                    "hello".endsWith("hell", 4)   // true
-                    "hello".includes("ell")       // true
-                    "hello".includes("ell", 1)    // true
-                    "hello".includes("ell", 2)    // false
+                    "test".startsWith("t") // true
+                    "tester".endsWith("r")   // true
+                    "testing".includes("tin")   // true
             </article>
         </section>
         <section>
-            <h3 class="title">Inheritance and Base Class access</h3>
-            <p class="description">Rest parameters allow you to quickly pass a list of dynamic array to a function</p>
+            <h3 class="title">Other Useful methods</h3>
+            <p class="description">Below are some of the useful methods introduced in ES6</p>
             <article class="code-block">
-                function sumArray(...array){ let result=0; for(let value of array){ result+=value; } console.log(result); } //call function
-                using dynamic array sumArray(1,2,3);
+              //truncate the decimal values out of a floating point
+              console.log(Math.trunc(25.7)) // 25
+
+              //repeat strings 
+            "foo".repeat(3) // foofoofoo
             </article>
         </section>
         <section>
             <h3 class="title">Export and Imports</h3>
-            <p class="description">Rest parameters allow you to quickly pass a list of dynamic array to a function</p>
+            <p class="description">Export allows you to export js code from another and import allows them to be imported to a file. See examples below: </p>
             <article class="code-block">
-                function sumArray(...array){ let result=0; for(let value of array){ result+=value; } console.log(result); } //call function
-                using dynamic array sumArray(1,2,3);
+               /*******IMPORT *****/
+               //properties
+                      export default let name = 'Sudeep;
+                      export let name = 'Sudeep;
+
+               //export methods
+               let add=(num1, num2)=>{
+                       return num1 + num2;
+                }
+                export default| {add};
+                OR
+                export {add as default}
+
+                OR use custom methodName
+                export {add as sum}
+
+              //export class
+
+              export default|class Test{
+              constructor(va1, var2){
+                  this.var1 = var1;
+                  this.var2 = var2;
+                 }
+                }
+                /****EXPORT *****/
+
+                //import all
+                import * from './file1.js';
+                
+                //import add variable
+                import { add } from './file1.js';
+          
+                import {add,name} from "./file.js";
+                
+                import {add as sum} from './file.js';
+
             </article>
         </section>
+
+        <section>
+                <h3 class="title">Symbol</h3>
+                <p class="description">An immutable primitive type called Symbol is introduced in Es6</p>
+                <article class="code-block">
+                        const symbol1 = Symbol(); 
+                        //not using new but a factory method
+
+                        const symbol2 = Symbol('test');
+                         //parameter optional
+                </article>
+            </section>
     </div>
 </body>
 
